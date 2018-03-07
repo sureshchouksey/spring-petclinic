@@ -1,6 +1,6 @@
 #!groovy
 
-pipeline {
+node {
   agent none
   stages {
     stage('Maven Install') {
@@ -9,11 +9,10 @@ pipeline {
           image 'maven:3.5.0'
         }
       }
-    	steps {
-        git 'https://github.com/dhirajg27/spring-petclinic.git' 
-	sh "git checkout ${env.BRANCH_NAME}"
-      }
+    	
       steps {
+ git 'https://github.com/dhirajg27/spring-petclinic.git' 
+	sh "git checkout ${env.BRANCH_NAME}"
         sh 'mvn clean install'
       }
     }
