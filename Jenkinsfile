@@ -10,6 +10,7 @@ pipeline {
         }
       }
       steps {
+        sh "git checkout ${env.BRANCH_NAME}"
         sh 'mvn clean install'
       }
     }
