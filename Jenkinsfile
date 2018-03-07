@@ -19,8 +19,8 @@ pipeline {
          archive 'target/*.jar'
     }
     
-    stage 'bake image'
-    docker.withRegistry('https://registry.hub.docker.com','docker-hub-credentials') {
+    stage ('bake image') {
+    
         def image = docker.build("ravisankar/ravisankardevops:${env.BUILD_TAG}",'.')
         
         stage 'test image'
