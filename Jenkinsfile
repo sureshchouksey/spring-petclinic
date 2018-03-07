@@ -13,7 +13,7 @@ node {
       steps ('Checkout') {
         git 'https://github.com/dhirajg27/spring-petclinic.git' 
         checkout scm
-	sh 'git checkout "${env.BRANCH_NAME}"' 
+	sh 'git checkout branch-poc' 
         sh 'mvn clean install'
       }
     }
