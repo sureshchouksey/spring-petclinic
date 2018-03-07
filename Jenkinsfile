@@ -10,9 +10,9 @@ node {
         }
       }
     	
-      steps {
- git 'https://github.com/dhirajg27/spring-petclinic.git' 
-	sh "git checkout ${env.BRANCH_NAME}"
+      steps ('Checkout') {
+        git 'https://github.com/dhirajg27/spring-petclinic.git' 
+	sh "git checkout ${env.BRANCH_NAME}" 
         sh 'mvn clean install'
       }
     }
