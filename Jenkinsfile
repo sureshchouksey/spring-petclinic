@@ -2,7 +2,7 @@
 def branchVersion = ""
 pipeline {
   
-  agent {       label 'any'     }
+ 
   tools {
     jdk 'jdk8'
     maven 'maven3'
