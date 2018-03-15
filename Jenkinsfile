@@ -8,11 +8,10 @@ pipeline {
     }
   stages {
      stage('Checkout'){          
-        steps {
-           // checkout repository
-          checkout scm
+     steps {
         sh "git checkout ${env.BRANCH_NAME}"
-        }
+        sh 'mvn clean install'
+}
        
     }
      stage ('Java Build') {
