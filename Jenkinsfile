@@ -7,11 +7,10 @@ pipeline {
         maven 'maven3'
     }
   stages {
-     stage('Checkout'){
-
+     stage('Checkout'){          
+        steps {
            // checkout repository
           checkout scm
-        steps {
         sh "git checkout ${env.BRANCH_NAME}"
         }
        
