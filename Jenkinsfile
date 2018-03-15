@@ -1,7 +1,7 @@
 #!groovy
-
+def branchVersion = ""
 pipeline {
-  def branchVersion = ""
+  
   agent {       label 'puppet'     }
   tools {
     jdk 'jdk8'
