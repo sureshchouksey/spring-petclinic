@@ -1,11 +1,12 @@
 #!groovy
-def branchVersion = ""
+
 pipeline {
   agent none
       tools {
         jdk 'jdk8'
         maven 'maven3'
     }
+  def branchVersion = ""
   stages {
      stage('Checkout'){          
      steps {
