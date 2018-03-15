@@ -11,8 +11,7 @@ pipeline {
   stages {
      stage('Checkout'){    
        steps {
-        sh "git checkout ${env.BRANCH_NAME}"
-        sh 'mvn clean install'
+        sh "git checkout ${env.BRANCH_NAME}"        
        }
      }
      stage ('Java Build') {
@@ -20,5 +19,10 @@ pipeline {
          sh 'mvn clean package -U'
        }
      }
+     stage('Sonar') {
+            steps {
+                sh "mvn sonar:sonar -Dsonar.host.url=http://sonar-devel.local:29000/"
+            }
+        }
   }
 }
