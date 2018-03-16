@@ -1,7 +1,7 @@
 #!groovy
-
-pipeline {
   def app
+pipeline {
+
  agent any 
   tools {
     jdk 'jdk8'
