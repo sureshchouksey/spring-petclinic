@@ -30,7 +30,8 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
       steps {
-        app = docker.build("dockerpoc/FL5")}
+        app = docker.build("dockerpoc/FL5")
+      }
     }
     
     stage('Test image') {
@@ -46,7 +47,7 @@ pipeline {
     stage('Push image') {
       
         }
-    }
+    
 
   }
 }
