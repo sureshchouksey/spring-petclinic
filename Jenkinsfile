@@ -30,22 +30,12 @@ pipeline {
     
    stage('Create Docker Image') {
   steps{
-    script {
-      def apitestimage = docker.build("Devops-POC5/pipeline")
-    }
+     sh 'docker build -t Devops-POC5/pipeline:latest .'
+   
   }
 }
 
-stage('Test Dockerimage') {
-  steps{
-    script {
-      apitestimage.inside {
-        sh 'echo cd testing && ctest'
-      }           
-    }
-  }
-}
-    
+
     
 
   }
