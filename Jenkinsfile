@@ -31,7 +31,7 @@ pipeline {
    stage('Create Docker Image') {
   steps{
     script {
-      def apitestimage = docker.build("Devops-POC5/docker-jenkins-pipeline:${env.BUILD_NUMBER}")
+      def apitestimage = docker.build("Devops-POC5/pipeline:${env.BUILD_NUMBER}")
     }
   }
 }
