@@ -26,9 +26,8 @@ pipeline {
             }
         }
     
-    stage('Build image') {
-       
-          docker.build("dockerpoc/FL5")
+   stage('Create Docker Image') {
+       docker.build("dockerpoc-5/docker-jenkins-pipeline:${env.BUILD_NUMBER}")         
      
     }
     
