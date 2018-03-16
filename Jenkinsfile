@@ -16,7 +16,7 @@ pipeline {
      }
      stage ('Java Build') {
        steps {
-         sh 'mvn clean package -U'
+         sh 'mvn clean install'
        }
      }
      stage('Sonar') {
