@@ -26,10 +26,25 @@ pipeline {
             }
         }
     
+   
+    
    stage('Create Docker Image') {
-       docker.build("dockerpoc-5/docker-jenkins-pipeline:${env.BUILD_NUMBER}")         
-     
+  steps{
+    script {
+      def apitestimage = docker.build('ockerpoc-5/docker-jenkins-pipeline:${env.BUILD_NUMBER}', '--no-cache=true dockerbuild')
     }
+  }
+}
+
+stage('Test Dockerimage') {
+  steps{
+    script {
+      apitestimage.inside {
+        sh 'echo cd testing && ctest'
+      }           
+    }
+  }
+}
     
     
 
