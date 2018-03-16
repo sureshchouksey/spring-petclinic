@@ -1,5 +1,5 @@
 #!groovy
-def app
+
 pipeline {
   
  agent any 
@@ -9,6 +9,7 @@ pipeline {
   }
   
   stages {
+    def app
      stage('Checkout'){    
        steps {
         sh "git checkout ${env.BRANCH_NAME}"        
