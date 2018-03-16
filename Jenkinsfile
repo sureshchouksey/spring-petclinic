@@ -21,7 +21,7 @@ pipeline {
      }
      stage('Sonar') {
             steps {
-                sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar -Dsonar.host.url=http://sonar-devel.local"
+                sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3:sonar -Dsonar.host.url=http://sonar-devel.local"
             }
         }
   }
