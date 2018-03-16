@@ -17,7 +17,7 @@ pipeline {
      }
      stage ('Java Build') {
        steps {
-         sh 'mvn clean install'
+         sh 'mvn clean install -DskipTests'
        }
      }
      stage('Sonar') {
@@ -28,7 +28,7 @@ pipeline {
     
     stage('Build image') {
         steps {
-          app = docker.build("dockerpoc/FL5")
+          docker.build("dockerpoc/FL5")
         }
     }
     
