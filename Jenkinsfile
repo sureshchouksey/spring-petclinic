@@ -27,9 +27,9 @@ pipeline {
         }
     
     stage('Build image') {
-        steps {
+       
           docker.build("dockerpoc/FL5")
-        }
+     
     }
     
     
