@@ -1,7 +1,7 @@
 #!groovy
 
 pipeline {
-  
+  def app
  agent any 
   tools {
     jdk 'jdk8'
@@ -9,7 +9,7 @@ pipeline {
   }
   
   stages {
-    def app
+    
      stage('Checkout'){    
        steps {
         sh "git checkout ${env.BRANCH_NAME}"        
