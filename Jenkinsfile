@@ -23,7 +23,7 @@ pipeline {
      }
      stage('Sonar') {
             steps {
-               sh whoami
+               sh "whoami"
                // sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -Dsonar.host.url=http://sonar-devel.local"
             }
         }
@@ -32,7 +32,7 @@ pipeline {
     
    stage('Create Docker Image') {
      steps{
-       sh whoami
+       sh "pwd"
        // prepare docker build context
       //sh "cp /target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar ./tmp-docker-build-context"
       //sh 'docker build -t devops-poc/pipeline:latest .'
