@@ -42,7 +42,7 @@ pipeline {
 }
  stage('Run Docker Image') {
      steps{
-         sh "docker run -p8082:8080  devops-poc/pipeline:latest"        
+         sh "sudo docker run -p8082:8080  devops-poc/pipeline:latest"        
   }
 }
 
