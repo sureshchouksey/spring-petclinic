@@ -12,12 +12,7 @@ pipeline {
     
      stage('Checkout'){    
        steps {
-          
-          // save our docker build context before we switch branches
-          sh "cp -r ./.docker/build tmp-docker-build-context"
-         
-          sh "git checkout ${env.BRANCH_NAME}"     
-          
+          sh "git checkout ${env.BRANCH_NAME}"               
        }
      }
      stage ('Java Build') {
