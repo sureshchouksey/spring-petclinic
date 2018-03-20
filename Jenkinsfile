@@ -42,7 +42,7 @@ pipeline {
 }
  stage('Run Docker Image') {
      steps{
-         sh "docker run --hostname=web-devel.local -ti -p8082:8080  devops-poc/pipeline:latest"        
+         sh "docker run -ti -p8082:8080  devops-poc/pipeline:latest"        
   }
 }
 
