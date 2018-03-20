@@ -35,7 +35,8 @@ pipeline {
        //sh "pwd"
        // prepare docker build context
       //sh "cp /target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar ./tmp-docker-build-context"
-      sh "docker build -t devops-poc/pipeline:latest ."
+      sh "sudo docker ps -a" 
+      sh "sudo docker build -t devops-poc/pipeline:latest ."
    
   }
 }
