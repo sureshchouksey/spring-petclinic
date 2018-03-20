@@ -32,10 +32,10 @@ pipeline {
     
    stage('Create Docker Image') {
      steps{
-       sh "pwd"
+       //sh "pwd"
        // prepare docker build context
       //sh "cp /target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar ./tmp-docker-build-context"
-      //sh 'docker build -t devops-poc/pipeline:latest .'
+      sh "docker build -t devops-poc/pipeline:latest ."
    
   }
 }
