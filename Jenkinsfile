@@ -36,13 +36,13 @@ pipeline {
        // prepare docker build context
       //sh "cp /target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar ./tmp-docker-build-context"
       sh "sudo docker ps -a" 
-      sh "sudo docker build -t devops-poc/pipeline:latest ."
+      sh "sudo docker build -t devops-poc-${env.VERSION_NUMBER}/pipeline:latest ."
    
   }
 }
  stage('Run Docker Image') {
      steps{
-         sh "sudo docker run -p8082:8080  devops-poc/pipeline:latest"        
+         sh "sudo docker run -p8082:8080  devops-poc-${env.VERSION_NUMBER}/pipeline:latest"        
   }
 }
 
