@@ -40,8 +40,13 @@ pipeline {
  
     stage('Run Docker Image') {
      steps{
+       try {
          sh "sudo docker run -p8082:8080  devops-poc-${env.VERSION_NUMBER}/pipeline:latest"        
-          }
+          } catch (error) {
+          } finally {
+              // Stop and remove database container here             
+        }
+       }
       }
     stage('Run Smoke Tests') {
       steps {
