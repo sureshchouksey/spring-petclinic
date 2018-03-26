@@ -38,9 +38,11 @@ pipeline {
           }
      }
  
-    stage('Run Docker Image') {
+    stage('Run Docker Image') { 
+      try {
+                               
      steps{
-       try {
+      
          sh "sudo docker run -p8082:8080  devops-poc-${env.VERSION_NUMBER}/pipeline:latest"        
           } catch (error) {
           } finally {
