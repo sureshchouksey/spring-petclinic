@@ -26,27 +26,27 @@ pipeline {
                sh "whoami"
                // sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -Dsonar.host.url=http://sonar-devel.local"
             }
-        }
+        }  
     
-   
-    
-   stage('Create Docker Image') {
+    stage('Create Docker Image') {
      steps{
        //sh "pwd"
        // prepare docker build context
       //sh "cp /target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar ./tmp-docker-build-context"
       sh "sudo docker ps -a" 
       sh "sudo docker build -t devops-poc-${env.VERSION_NUMBER}/pipeline:latest ."
-   
-  }
-}
- stage('Run Docker Image') {
+          }
+     }
+ 
+    stage('Run Docker Image') {
      steps{
          sh "sudo docker run -p8082:8080  devops-poc-${env.VERSION_NUMBER}/pipeline:latest"        
-  }
-}
-
-
+          }
+      }
+    
+    node(slave-1) {
+    build job: 'smoketest'
+        }
     
 
   }
