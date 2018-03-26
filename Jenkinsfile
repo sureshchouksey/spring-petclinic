@@ -44,9 +44,11 @@ pipeline {
           }
       }
     stage('Run Smoke Tests') {
-    node(slave-1) {
-    build job: 'smoketest'
-        }
+      agent {
+        node(slave-1) {
+          build job: 'smoketest'
+            }
+      }
     }
 
   }
