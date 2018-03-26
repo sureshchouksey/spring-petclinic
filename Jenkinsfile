@@ -43,11 +43,11 @@ pipeline {
          sh "sudo docker run -p8082:8080  devops-poc-${env.VERSION_NUMBER}/pipeline:latest"        
           }
       }
-    
+    stage('Run Smoke Tests') {
     node(slave-1) {
     build job: 'smoketest'
         }
-    
+    }
 
   }
 }
