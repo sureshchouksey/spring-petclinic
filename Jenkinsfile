@@ -50,6 +50,7 @@ pipeline {
                         -v /var/run/docker.sock:/var/run/docker.sock:ro \
                         -e TIMEOUT=30 \
                         devops-poc-${env.VERSION_NUMBER}/pipeline:latest
+            """                        
            } 
        
       }
