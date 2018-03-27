@@ -44,7 +44,7 @@ pipeline {
       
          //sh "sudo docker run -p8082:8080  devops-poc-${env.VERSION_NUMBER}/pipeline:latest"     
          sh """
-                    docker run --rm \
+                    sudo docker run --rm \
                         -p8082:8080 \
                         -v /var/run/docker.sock:/var/run/docker.sock:ro \
                         -e TIMEOUT=30 \
