@@ -31,11 +31,9 @@ pipeline {
     
     stage('Create Docker Image') {
      steps{
-       //sh "pwd"
-       // prepare docker build context
-      //sh "cp /target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar ./tmp-docker-build-context"
-      sh "sudo docker ps -a" 
-      sh "sudo docker build -t devops-poc-${env.VERSION_NUMBER}/pipeline:latest ."
+      sh "sudo docker stop devops-poc/pipeline:latest" 
+      sh "sudo docker rm devops-poc/pipeline:latest" 
+      sh "sudo docker build -t devops-poc/pipeline:latest ."
           }
      }
  
@@ -49,14 +47,14 @@ pipeline {
                         -p8082:8080 \
                         -v /var/run/docker.sock:/var/run/docker.sock:ro \
                         -e TIMEOUT=30 \
-                        devops-poc-${env.VERSION_NUMBER}/pipeline:latest
+                        devops-poc/pipeline:latest
             """                        
            } 
        
       }
     stage('Run Smoke Tests') {
       steps {
-        node('slave-1') {
+        node('master') {
               build job: 'smoketest'
             }
       }
