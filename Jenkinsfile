@@ -29,8 +29,8 @@ pipeline {
     
     stage('Create Docker Image') {
      steps{
-      sh "sudo docker stop devops-poc/pipeline:latest" 
-      sh "sudo docker rm devops-poc/pipeline:latest" 
+      //sh "sudo docker stop devops-poc/pipeline:latest" 
+      //sh "sudo docker rm devops-poc/pipeline:latest" 
       sh "sudo docker build -t devops-poc/pipeline:latest ."
           }
      }
