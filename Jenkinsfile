@@ -1,38 +1,5 @@
 #!groovy
   def app
-def emailNotifications = 'manish_nair@fulcrumww.com'
-def notificationSent    = false
-
-def sendNotification(buildChanged)
-{
-    if (notificationSent)
-    {
-        return
-    }
-    notificationSent = true
-
-    if (currentBuild.currentResult == 'SUCCESS')
-    {
-        // notify users when the build is back to normal
-        mail to: emailNotifications,
-            subject: "Build Successful: ${currentBuild.fullDisplayName}",
-            body: "The build is successful ${env.BUILD_URL}"
-    }
-    else if ((currentBuild.currentResult == 'FAILURE') && buildChanged)
-    {
-        // notify users when the Pipeline first fails
-        mail to: emailNotifications,
-            subject: "Build failed: ${currentBuild.fullDisplayName}",
-            body: "Something went wrong with ${env.BUILD_URL}"
-    }
-    else if ((currentBuild.currentResult == 'FAILURE'))
-    {
-        // notify users when they check into a broken build
-        mail to: emailNotifications,
-            subject: "Build failed : ${currentBuild.fullDisplayName}",
-            body: "Something is still wrong with ${env.BUILD_URL}"
-    }
-}
 pipeline {
 
  agent any 
@@ -92,23 +59,6 @@ pipeline {
             }
       }
     }
-         
 
   }
-  post {
-        changed {
-            sendNotification buildChanged:true
-        }
-        failure {
-            sendNotification buildChanged:false
-        }
-    }
-
-        always {
-            step([$class: 'Mailer',
-                notifyEveryUnstableBuild: true,
-                recipients: "manish_nair@fulcrumww.com",
-                sendToIndividuals: true])
-        }
-    }
 }
